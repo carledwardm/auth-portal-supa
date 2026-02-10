@@ -1,3 +1,4 @@
+"use client"
 import styles from "./login.module.scss";
 
 export default function login() {
