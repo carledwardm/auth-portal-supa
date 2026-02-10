@@ -16,9 +16,14 @@
     flex-direction: column;
     width: 100%;
     max-width: 750px;
+    height: 650px;
     border: 1px solid var(--foreground);
     border-radius: 5px;
     gap: 50px;
+}
+
+.loginTitle {
+    font-size: 42px;
 }
 
 .loginForm {
@@ -44,7 +49,8 @@
         outline: 2px solid var(--outline);
         border-color: transparent;
         color: var(--outline);
-        box-shadow: 0 0 10px 2px var(--outline);
+        box-shadow: 0 0 8px 4px var(--outline);
+        text-shadow: 0 0 1px var(--outline);
     }
 }
 
@@ -63,22 +69,34 @@
         outline: 2px solid var(--outline);
         border-color: transparent;
         color: var(--outline);
-        box-shadow: 0 0 10px 2px var(--outline);
+        box-shadow: 0 0 8px 4px var(--outline);
+        text-shadow: 0 0 1px var(--outline);
     }
 }
 
 .submitBtn {
     background-color: var(--foreground);
     color: var(--background);
+    font-size: 18px;
+    font-weight: bold;
     padding: 10px 15px;
     border-radius: 5px;
-    border: none;
+    border: 2px solid transparent;
     transition: all 0.2s ease-in-out;
+    margin-top: 10px;
 
     &:hover {
         background-color: var(--background);
         color: var(--foreground);
-        border: 1px solid var(--foreground);
+        border: 2px solid var(--foreground);
+        transform: scale(1.1);
+    }
+
+    &:active {
+        background-color: var(--background);
+        border: 2px solid var(--outline);
+        box-shadow: 0 0 5px 2px var(--outline);
+        color: var(--outline);
         transform: scale(1.1);
     }
 }

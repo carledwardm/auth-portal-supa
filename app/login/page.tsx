@@ -4,7 +4,7 @@ export default function login() {
     return (
         <main className={styles.loginMain}>
             <section className={styles.loginSection}>
-                <h1>Log In</h1>
+                <h1 className={styles.loginTitle}>Log In</h1>
                 <form className={styles.loginForm}>
                     <input type="text" className={styles.input} placeholder="Username"></input>
                     <input type="text" className={styles.input} placeholder="Email"></input>
