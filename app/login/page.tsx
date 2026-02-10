@@ -7,10 +7,8 @@ export default function login() {
                 <h1 className={styles.loginTitle}>Log In</h1>
                 <form className={styles.loginForm}>
                     <input type="text" className={styles.input} placeholder="Username"></input>
-                    <input type="text" className={styles.input} placeholder="Email"></input>
-                    <textarea className={styles.bioInput} placeholder="Bio"></textarea>
                     <input type="password" className={styles.input} placeholder="Password"></input>
-                    <button type="submit" className={styles.submitBtn}>Log in</button>
+                    <button type="submit" className={styles.submitBtn}>Submit</button>
                 </form>
             </section>
         </main>

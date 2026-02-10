@@ -4,12 +4,12 @@
   --outline: #52D924;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 html,
 body {
@@ -24,7 +24,13 @@ body {
   justify-content: center;  
   flex-direction: column;
   color: var(--foreground);
-  background: var(--background);
+  background: linear-gradient(
+    90deg,
+    #0a0a0a 0%,      /* deep black top */
+    #141414 10%, 
+    #141414 90%,    /* slightly lighter middle */
+    #0a0a0a 100%     /* deep black bottom */
+  );
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -41,8 +47,8 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-}
+} */
