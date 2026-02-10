@@ -37,6 +37,15 @@
     border: 1px solid var(--foreground);
     border-radius: 5px;
     padding: 10px 15px;
+    transition: box-shadow 0.2s ease-in-out,
+                color 0.2s ease-in-out;
+
+    &:focus {
+        outline: 2px solid var(--outline);
+        border-color: transparent;
+        color: var(--outline);
+        box-shadow: 0 0 10px 2px var(--outline);
+    }
 }
 
 .bioInput {
@@ -47,6 +56,15 @@
     border: 1px solid var(--foreground);
     border-radius: 5px;
     padding: 10px 15px;
+    transition: box-shadow 0.2s ease-in-out,
+                color 0.2s ease-in-out;
+
+    &:focus {
+        outline: 2px solid var(--outline);
+        border-color: transparent;
+        color: var(--outline);
+        box-shadow: 0 0 10px 2px var(--outline);
+    }
 }
 
 .submitBtn {
