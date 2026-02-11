@@ -12,10 +12,9 @@ export default function signup() {
     const [ userFirstName, setUserFirstName ] = useState<string>("");
     const [ showToast, setShowToast ] = useState<boolean>(false);
     const [ toastMessage, setToastMessage ] = useState<string>("");
+    const { supa } = useSupa();
 
     // Supabase client 
-    const supa = useSupa();
-
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
         if (!userEmail || !userPassword) {

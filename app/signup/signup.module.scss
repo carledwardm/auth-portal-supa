@@ -23,6 +23,9 @@
 
 .signupTitle {
     font-size: 42px;
+    font-weight: bold;
+    text-shadow: 0 0 3px var(--outline);
+    color: var(--outline);
 }
 
 .signupForm {

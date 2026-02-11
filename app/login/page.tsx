@@ -1,17 +1,61 @@
 "use client"
+import { useState } from "react";
 import styles from "./login.module.scss";
+import Toast from "@/components/Toast/Toast";
+import { useSupa } from "@/context/SupaContext";
+
 
 export default function login() {
+    const [ userEmail, setUserEmail ] = useState<string>("");
+    const [ userPassword, setUserPassword ] = useState<string>("");
+    const [ showToast, setShowToast ] = useState<boolean>(false);
+    const [ toastMessage, setToastMessage ] = useState<string>("");
+    const { supa } = useSupa();
+
+    const handleSubmit = async (e: React.SubmitEvent) => {
+        e.preventDefault();
+        if (!userEmail || !userPassword) {
+            setShowToast(true);
+            setToastMessage("Both email and password are required.");
+            return;
+        }
+        const auth = await supa.auth.signInWithPassword({
+            email: userEmail,
+            password: userPassword,
+        })
+        if (auth.data) {
+            console.log(auth);
+            setShowToast(true);
+            setToastMessage("Successfully signed in.");
+        }
+        if (auth.error) {
+            console.log(auth.error);
+            setShowToast(true);
+            setToastMessage("Your credentials are invalid, please try again.");
+        }
+        
+    }
+
     return (
         <main className={styles.loginMain}>
             <section className={styles.loginSection}>
                 <h1 className={styles.loginTitle}>Log In</h1>
-                <form className={styles.loginForm}>
-                    <input type="text" className={styles.input} placeholder="Username"></input>
-                    <input type="password" className={styles.input} placeholder="Password"></input>
+                <form className={styles.loginForm} onSubmit={handleSubmit}>
+                    <input type="text" className={styles.input} placeholder="Email" onChange={ e => setUserEmail(e.target.value)}></input>
+                    <input type="password" className={styles.input} placeholder="Password" onChange={ e => setUserPassword(e.target.value)}></input>
                     <button type="submit" className={styles.submitBtn}>Submit</button>
                 </form>
             </section>
+
+            {showToast && <Toast 
+                            message={toastMessage}
+                            duration={2000}
+                            onClose={() => {
+                                setShowToast(false)
+                                setToastMessage("");
+                            }}
+            />}
+
         </main>
         
     )
