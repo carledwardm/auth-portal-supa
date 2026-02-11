@@ -11,3 +11,6 @@ export function SupaProvider({children}: {children: ReactNode}) {
     return <SupabaseContext value={supabase}>{children}</SupabaseContext>
 }
 
+export function useSupa() {
+    return useContext(SupabaseContext);
+}

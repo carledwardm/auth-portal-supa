@@ -1,12 +1,15 @@
 "use client";
 import styles from "./signup.module.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useSupa } from "@/context/SupaContext";
 
 export default function signup() {
     const [ username, setUsername ] = useState<string>("");
     const [ email, setEmail ] = useState<string>("");
     const [ bio, setBio ] = useState<string>("");
     const [ password, setPassword ] = useState<string>("");
+
+    const supa = useSupa();
 
     const handleSubmit = (e: React.SubmitEvent) => {
         e.preventDefault();
