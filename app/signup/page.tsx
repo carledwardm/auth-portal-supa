@@ -2,6 +2,7 @@
 import styles from "./signup.module.scss";
 import { useState } from "react";
 import { useSupa } from "@/context/SupaContext";
+import Toast from "@/components/Toast/Toast";
 
 export default function signup() {
     const [ userUsername, setUserUsername ] = useState<string>("");
@@ -9,14 +10,20 @@ export default function signup() {
     const [ userBio, setUserBio ] = useState<string>("");
     const [ userPassword, setUserPassword ] = useState<string>("");
     const [ userFirstName, setUserFirstName ] = useState<string>("");
+    const [ showToast, setShowToast ] = useState<boolean>(false);
+    const [ toastMessage, setToastMessage ] = useState<string>("");
 
     // Supabase client 
     const supa = useSupa();
 
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
-        console.log(userUsername, userEmail, userBio, userPassword);
-        const { data, error } = await supa.auth.signUp({
+        if (!userEmail || !userPassword) {
+            setShowToast(true);
+            setToastMessage("Both email and password are required.");
+            return;
+        }
+        const auth = await supa.auth.signUp({
             email: userEmail,
             password: userPassword,
             options: {
@@ -26,12 +33,16 @@ export default function signup() {
                 }
             },
         })
-        if (data) {
+        if (auth.data) {
+            console.log(auth);
             console.log("Success");
-            console.log(data);
+            setShowToast(true);
+            setToastMessage("Account created, please check yoru email and verify your account");
         }
-        if (error) {
-            console.log(error);
+        if (auth.error) {
+            console.log(auth.error);
+            setShowToast(true);
+            setToastMessage("An error has occurred, please try again.");
         }
         
     }
@@ -49,6 +60,16 @@ export default function signup() {
                         <button type="submit" className={styles.submitBtn}>Submit</button>
                     </form>
             </section>
+
+            {showToast && <Toast 
+                message={toastMessage}
+                duration={2000}
+                onClose={() => {
+                    setShowToast(false)
+                    setToastMessage("");
+                }}
+            />}
+
         </main>
     )
 }
