@@ -120,3 +120,13 @@ a.secondary {
     --button-secondary-border: #1a1a1a;
   }
 }
+
+.userGreeting {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.userName {
+  color: var(--outline);
+  text-shadow: 0 0 3px var(--outline);
+}
