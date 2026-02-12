@@ -5,16 +5,24 @@ import { useSupa } from "@/context/SupaContext";
 import Toast from "@/components/Toast/Toast";
 
 export default function signup() {
-    const [ userUsername, setUserUsername ] = useState<string>("");
     const [ userEmail, setUserEmail ] = useState<string>("");
-    const [ userBio, setUserBio ] = useState<string>("");
     const [ userPassword, setUserPassword ] = useState<string>("");
     const [ userFirstName, setUserFirstName ] = useState<string>("");
     const [ showToast, setShowToast ] = useState<boolean>(false);
     const [ toastMessage, setToastMessage ] = useState<string>("");
-    const { supa } = useSupa();
-
     // Supabase client 
+    const { supa } = useSupa();
+    
+    const confirmNewAccount = async () => {
+        const { data, error } = await supa.from("Users").select().eq("Email", userEmail);
+        if (data) {
+            console.log(data)
+        }
+        if (error) {
+            console.log(error);
+        }
+    }
+
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
         if (!userEmail || !userPassword) {
@@ -22,6 +30,8 @@ export default function signup() {
             setToastMessage("Both email and password are required.");
             return;
         }
+        confirmNewAccount();
+        // Sign user up in supabase auth
         const auth = await supa.auth.signUp({
             email: userEmail,
             password: userPassword,
@@ -33,28 +43,23 @@ export default function signup() {
             },
         })
         if (auth.data) {
-            console.log(auth);
-            console.log("Success");
             setShowToast(true);
-            setToastMessage("Account created, please check yoru email and verify your account");
-        }
+            setToastMessage("Account created, please check yoru email and verify your account");      
+            console.log(auth);
+            }
         if (auth.error) {
-            console.log(auth.error);
             setShowToast(true);
             setToastMessage("An error has occurred, please try again.");
-        }
-        
-    }
+            } 
+        }  
 
     return (
         <main className={styles.signupMain}>
                 <section className={styles.signupSection}>
                     <h1 className={styles.signupTitle}>Sign Up</h1>
                     <form className={styles.signupForm} onSubmit={handleSubmit}>
-                        <input type="text" className={styles.input} placeholder="Username" onChange={ e => setUserUsername(e.target.value)}></input>
                         <input type="text" className={styles.input} placeholder="Email" onChange={ e => setUserEmail(e.target.value)}></input>
-                         <input type="text" className={styles.input} placeholder="First Name" onChange={ e => setUserFirstName(e.target.value)}></input>
-                        <textarea className={styles.bioInput} placeholder="Bio" onChange={ e => setUserBio(e.target.value)}></textarea>
+                        <input type="text" className={styles.input} placeholder="First Name" onChange={ e => setUserFirstName(e.target.value)}></input>
                         <input type="password" className={styles.input} placeholder="Password" onChange={ e => setUserPassword(e.target.value)}></input>
                         <button type="submit" className={styles.submitBtn}>Submit</button>
                     </form>
