@@ -1,4 +1,18 @@
 import styles from "./GoogleSignin.module.scss";
+import { useSupa } from "@/context/SupaContext"
+
+
+const { supa } = useSupa();
+async function handleGoogleSignin() {
+    const { data, error } = await supa.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+            redirectTo: "http://localhost:3000"
+        }
+    })
+}
+
+(globalThis as any).handleGoogleLogin = handleGoogleSignin;
 
 export default function GoogleSignin() {
     return (

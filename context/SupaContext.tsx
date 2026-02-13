@@ -27,4 +27,4 @@ export function SupaProvider({children}: {children: ReactNode}) {
 
 export function useSupa() {
     return useContext(SupabaseContext);
-}
+} 
