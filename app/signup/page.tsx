@@ -3,6 +3,7 @@ import styles from "./signup.module.scss";
 import { useState } from "react";
 import { useSupa } from "@/context/SupaContext";
 import Toast from "@/components/Toast/Toast";
+import GoogleSignup from "@/components/GoogleOAuth/GoogleSignup";
 
 export default function signup() {
     const [ userEmail, setUserEmail ] = useState<string>("");
@@ -62,6 +63,7 @@ export default function signup() {
                         <input type="text" className={styles.input} placeholder="First Name" onChange={ e => setUserFirstName(e.target.value)}></input>
                         <input type="password" className={styles.input} placeholder="Password" onChange={ e => setUserPassword(e.target.value)}></input>
                         <button type="submit" className={styles.submitBtn}>Submit</button>
+                        <GoogleSignup />
                     </form>
             </section>
 

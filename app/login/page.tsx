@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./login.module.scss";
 import Toast from "@/components/Toast/Toast";
 import { useSupa } from "@/context/SupaContext";
+import GoogleSignin from "@/components/GoogleOAuth/GoogleSignin"
 
 
 export default function login() {
@@ -44,6 +45,7 @@ export default function login() {
                     <input type="text" className={styles.input} placeholder="Email" onChange={ e => setUserEmail(e.target.value)}></input>
                     <input type="password" className={styles.input} placeholder="Password" onChange={ e => setUserPassword(e.target.value)}></input>
                     <button type="submit" className={styles.submitBtn}>Submit</button>
+                    <GoogleSignin />
                 </form>
             </section>
 
