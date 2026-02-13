@@ -22,6 +22,7 @@ export default function GoogleLogin() {
                 data-client_id="76215323654-gj80ej7rfb5o2qf2v2v47ophrg082hka.apps.googleusercontent.com"
                 data-context="signin"
                 data-ux_mode="popup"
+                data-callback="handleGoogleSignIn"
                 data-login_uri="https://sbyqtmurhrlrhmcvhjlj.supabase.co/auth/v1/callback"
                 data-nonce=""
                 data-auto_prompt="false">
