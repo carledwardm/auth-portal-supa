@@ -1,11 +1,11 @@
 import styles from "./GoogleSignup.module.scss";
 import { useSupa } from "@/context/SupaContext";
 
-export default function GoogleLogin() {
+export default function GoogleSignup() {
     const { supa } = useSupa();
 
 
-    async function handleGoogleLogin() {
+    async function handleGoogleSignup() {
         const { data, error } = await supa.auth.signInWithOAuth({
             provider: 'google',
             options: {
@@ -14,14 +14,14 @@ export default function GoogleLogin() {
         })
     }
 
-    (globalThis as any).handleGoogleLogin = handleGoogleLogin;
+    (globalThis as any).handleGoogleSignup = handleGoogleSignup;
     return (
         <div className={styles.googleLogin}>
             <div id="g_id_onload"
                 data-client_id="76215323654-gj80ej7rfb5o2qf2v2v47ophrg082hka.apps.googleusercontent.com"
                 data-context="signin"
                 data-ux_mode="popup"
-                data-callback="handleGoogleSignIn"
+                data-callback="handleGoogleSignup"
                 data-login_uri="https://sbyqtmurhrlrhmcvhjlj.supabase.co/auth/v1/callback"
                 data-nonce=""
                 data-auto_prompt="false">
