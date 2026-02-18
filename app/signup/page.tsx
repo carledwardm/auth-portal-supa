@@ -13,16 +13,6 @@ export default function signup() {
     const [ toastMessage, setToastMessage ] = useState<string>("");
     // Supabase client 
     const { supa } = useSupa();
-    
-    // const confirmNewAccount = async () => {
-    //     const { data, error } = await supa.from("Users").select().eq("Email", userEmail);
-    //     if (data) {
-    //         console.log(data)
-    //     }
-    //     if (error) {
-    //         console.log(error);
-    //     }
-    // }
 
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
@@ -31,7 +21,6 @@ export default function signup() {
             setToastMessage("Both email and password are required.");
             return;
         }
-        // confirmNewAccount();
         // Sign user up in supabase auth
         const auth = await supa.auth.signUp({
             email: userEmail,
