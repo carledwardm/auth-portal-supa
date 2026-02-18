@@ -10,6 +10,7 @@ export default function GoogleSignin() {
                 redirectTo: "http://localhost:3000"
             }
         })
+        console.log(data);
     }
 
     (globalThis as any).handleGoogleSignin = handleGoogleSignin;
