@@ -92,6 +92,7 @@
     font-size: 18px;
     font-weight: bold;
     padding: 10px 15px;
+    width: 200px;
     border-radius: 5px;
     border: 2px solid transparent;
     transition: all 0.2s ease-in-out;
@@ -102,7 +103,6 @@
         background-color: var(--background);
         color: var(--foreground);
         border: 2px solid var(--foreground);
-        transform: scale(1.1);
     }
 
     &:active {
@@ -110,6 +110,5 @@
         border: 2px solid var(--outline);
         box-shadow: 0 0 5px 2px var(--outline);
         color: var(--outline);
-        transform: scale(1.1);
     }
 }

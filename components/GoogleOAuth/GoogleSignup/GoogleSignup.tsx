@@ -1,4 +1,3 @@
-import styles from "./GoogleSignup.module.scss";
 import { useSupa } from "@/context/SupaContext";
 
 export default function GoogleSignup() {
@@ -16,7 +15,7 @@ export default function GoogleSignup() {
 
     (globalThis as any).handleGoogleSignup = handleGoogleSignup;
     return (
-        <div className={styles.googleLogin}>
+        <div>
             <div id="g_id_onload"
                 data-client_id="76215323654-gj80ej7rfb5o2qf2v2v47ophrg082hka.apps.googleusercontent.com"
                 data-context="signin"
