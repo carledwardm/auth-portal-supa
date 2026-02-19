@@ -25,12 +25,10 @@ export default function login() {
             password: userPassword,
         })
         if (auth.data) {
-            console.log(auth);
             setShowToast(true);
             setToastMessage("Successfully signed in.");
         }
         if (auth.error) {
-            console.log(auth.error);
             setShowToast(true);
             setToastMessage("Your credentials are invalid, please try again.");
         }

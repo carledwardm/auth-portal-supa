@@ -35,7 +35,6 @@ export default function signup() {
         if (auth.data) {
             setShowToast(true);
             setToastMessage("Account created, please check your email and verify your account");      
-            console.log(auth);
             }
         if (auth.error) {
             setShowToast(true);

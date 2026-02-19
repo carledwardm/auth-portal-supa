@@ -5,7 +5,7 @@ import { useSupa } from "@/context/SupaContext";
 export default function Home() {
   const { user } = useSupa();
 
-  console.log
+
 
   return (
       <main className={styles.main}>
