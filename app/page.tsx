@@ -51,7 +51,7 @@ export default function Home() {
             <p className={styles.homeText}>Feel free to fork and build upon</p>
           </div>
 
-          <a href="#" onClick={handleLogout} className={styles.logoutButton}>Log Out</a>
+          {user && <a href="#" onClick={handleLogout} className={styles.logoutButton}>Log Out</a>}
 
           {showToast && 
             <Toast 

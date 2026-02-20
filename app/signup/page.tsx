@@ -1,9 +1,10 @@
 "use client";
 import styles from "./signup.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSupa } from "@/context/SupaContext";
 import Toast from "@/components/Toast/Toast";
 import GoogleSignup from "@/components/GoogleOAuth/GoogleSignup";
+import { useRouter } from "next/navigation";
 
 export default function signup() {
     const [ userEmail, setUserEmail ] = useState<string>("");
@@ -11,8 +12,15 @@ export default function signup() {
     const [ userFirstName, setUserFirstName ] = useState<string>("");
     const [ showToast, setShowToast ] = useState<boolean>(false);
     const [ toastMessage, setToastMessage ] = useState<string>("");
+    const router = useRouter();
     // Supabase client 
-    const { supa } = useSupa();
+    const { loading, supa, user } = useSupa();
+
+    useEffect(() => {
+            if (user && !loading) {
+                setTimeout(() => router.push("/"), 1000)
+            }
+        }, [loading])
 
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();

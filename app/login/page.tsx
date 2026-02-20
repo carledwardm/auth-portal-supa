@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./login.module.scss";
 import Toast from "@/components/Toast/Toast";
 import { useSupa } from "@/context/SupaContext";
@@ -12,8 +12,14 @@ export default function login() {
     const [ userPassword, setUserPassword ] = useState<string>("");
     const [ showToast, setShowToast ] = useState<boolean>(false);
     const [ toastMessage, setToastMessage ] = useState<string>("");
-    const { supa } = useSupa();
+    const { loading, supa, user } = useSupa();
     const router = useRouter();
+
+    useEffect(() => {
+        if (user && !loading) {
+            setTimeout(() => router.push("/"), 1000)
+        }
+    }, [loading])
 
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
