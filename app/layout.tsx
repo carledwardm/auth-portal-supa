@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SupaProvider } from "@/context/SupaContext";
 import Script from 'next/script'
+import TrailField from "@/components/TrailField/TrailField"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +24,13 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>){
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <SupaProvider >
+          <TrailField />
           {children}
         </ SupaProvider>
         <Script src="https://accounts.google.com/gsi/client" 

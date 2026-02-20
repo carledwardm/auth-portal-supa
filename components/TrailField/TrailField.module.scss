@@ -1,0 +1,45 @@
+.trail {
+  position: fixed;
+  top: -10vh;
+  width: 1px;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, var(--outline), transparent);
+  opacity: 0;
+  animation: fall 3s linear infinite;
+}
+
+.trail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(to top, var(--outline), var(--outline), transparent);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: twinkling 4.5s infinite;
+}
+
+@keyframes twinkling {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
