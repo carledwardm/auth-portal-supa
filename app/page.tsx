@@ -2,12 +2,24 @@
 import styles from "./page.module.css";
 import { useSupa } from "@/context/SupaContext";
 import Toast from "@/components/Toast/Toast";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const { user, supa } = useSupa();
+  const { loading, user, supa } = useSupa();
   const [ showToast, setShowToast ] = useState<boolean>(false);
   const [ toastMessage, setToastMessage ] = useState<string>("");
+  const router = useRouter();
+
+
+  useEffect(() => {
+    if (!user && !loading) {
+      setTimeout(() => router.push("/login"), 3000)
+      setShowToast(true);
+      setToastMessage("Please log in, redirecting.");
+    }
+  }, [loading])
+  
 
   const handleLogout = async () => {
     const { error } = await supa.auth.signOut();
@@ -16,6 +28,7 @@ export default function Home() {
       setToastMessage("There was an unexpected error, please try again.");
       return;
     }
+    setTimeout(() => router.push("/login"), 3000)
     setShowToast(true);
     setToastMessage("Successfully signed out, redirecting.");
   }
