@@ -1,12 +1,23 @@
 'use client';
 import styles from "./page.module.css";
 import { useSupa } from "@/context/SupaContext";
+import Toast from "@/components/Toast/Toast";
+import { useState } from "react";
 
 export default function Home() {
-  const { user } = useSupa();
+  const { user, supa } = useSupa();
+  const [ showToast, setShowToast ] = useState<boolean>(false);
+  const [ toastMessage, setToastMessage ] = useState<string>("");
 
   const handleLogout = async () => {
-    console.log("Logging out!");
+    const { error } = await supa.auth.signOut();
+    if (error) {
+      setShowToast(true);
+      setToastMessage("There was an unexpected error, please try again.");
+      return;
+    }
+    setShowToast(true);
+    setToastMessage("Successfully signed out, redirecting.");
   }
 
   return (
@@ -19,6 +30,12 @@ export default function Home() {
           </span>!</h1>}
 
           <a href="#" onClick={handleLogout} className={styles.logoutButton}>Log Out</a>
+
+          {showToast && 
+            <Toast 
+              message={toastMessage}
+              onClose={() => setShowToast(false)}
+            />}
       </main>
   );
 }

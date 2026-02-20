@@ -144,6 +144,7 @@ a.secondary {
   margin-top: 10px;
   cursor: pointer;
   text-align: center;
+  margin-top: 50px;
 }
 
 .logoutButton:hover {
