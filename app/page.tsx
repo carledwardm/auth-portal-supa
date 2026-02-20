@@ -41,6 +41,15 @@ export default function Home() {
             user?.user_metadata.first_name || user?.user_metadata.full_name?.split(" ")[0] || "Guest"
           }
           </span>!</h1>}
+          <div className={styles.textBox}>
+            <p className={styles.homeText}>An authentication demo made using 
+              <span className={styles.highlightText}> Supabase</span> and <span className={styles.highlightText}>Google OAuth</span></p>
+              
+            <p className={styles.homeText}>Made with <span className={styles.highlightText}>React</span>, 
+              <span className={styles.highlightText}> Next.js</span> and <span className={styles.highlightText}>Supabase</span></p>
+
+            <p className={styles.homeText}>Feel free to fork and build upon</p>
+          </div>
 
           <a href="#" onClick={handleLogout} className={styles.logoutButton}>Log Out</a>
 

@@ -159,3 +159,19 @@ a.secondary {
   background-color: var(--outline);
   color: var(--background);
 }
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin-top: 50px;
+  gap: 25px;
+}
+
+.homeText {
+  text-align: left;
+}
+
+.highlightText {
+  color: var(--outline);
+}
