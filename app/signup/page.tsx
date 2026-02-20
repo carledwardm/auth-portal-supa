@@ -53,6 +53,7 @@ export default function signup() {
                         <button type="submit" className={styles.submitBtn}>Submit</button>
                         <GoogleSignup />
                     </form>
+                    <p className={styles.loginText}>Got an account? <a href="/login" className={styles.loginLink}>Log in</a>!</p>
             </section>
 
             {showToast && <Toast 
