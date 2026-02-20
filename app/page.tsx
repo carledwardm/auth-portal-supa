@@ -5,7 +5,9 @@ import { useSupa } from "@/context/SupaContext";
 export default function Home() {
   const { user } = useSupa();
 
-  console.log( user )
+  const handleLogout = async () => {
+    console.log("Logging out!");
+  }
 
   return (
       <main className={styles.main}>
@@ -15,6 +17,8 @@ export default function Home() {
             user?.user_metadata.first_name || user?.user_metadata.full_name?.split(" ")[0] || "Guest"
           }
           </span>!</h1>}
+
+          <a href="#" onClick={handleLogout} className={styles.logoutButton}>Log Out</a>
       </main>
   );
 }
