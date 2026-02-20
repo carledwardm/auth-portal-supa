@@ -4,6 +4,7 @@ import styles from "./login.module.scss";
 import Toast from "@/components/Toast/Toast";
 import { useSupa } from "@/context/SupaContext";
 import GoogleSignin from "@/components/GoogleOAuth/GoogleSignin"
+import { useRouter } from "next/navigation";
 
 
 export default function login() {
@@ -12,6 +13,7 @@ export default function login() {
     const [ showToast, setShowToast ] = useState<boolean>(false);
     const [ toastMessage, setToastMessage ] = useState<string>("");
     const { supa } = useSupa();
+    const router = useRouter();
 
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
@@ -27,6 +29,7 @@ export default function login() {
         if (auth.data) {
             setShowToast(true);
             setToastMessage("Successfully signed in.");
+            setTimeout(() => router.push("/"), 3000);
         }
         if (auth.error) {
             setShowToast(true);
