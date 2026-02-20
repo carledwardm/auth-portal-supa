@@ -6,7 +6,7 @@ export default function GoogleSignin() {
         const { data, error } = await supa.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: "http://localhost:3000"
+                redirectTo: "https://auth-portal-supa.vercel.app/"
             }
         })
         console.log(data);
