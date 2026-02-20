@@ -8,14 +8,14 @@
 }
 
 .signupSection {
-    padding: 50px 25px;
+    padding: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     width: 100%;
     max-width: 500px;
-    height: 650px;
+    height: 550px;
     border: 1px solid var(--foreground);
     border-radius: 5px;
     gap: 50px;
@@ -61,31 +61,6 @@
     }
 }
 
-.bioInput {
-    width: 100%;
-    max-width: 350px;
-    min-height: 200px;
-    background-color: transparent;
-    border: 1px solid var(--foreground);
-    border-radius: 5px;
-    color: var(--foreground);
-    padding: 10px 15px;
-    transition: box-shadow 0.2s ease-in-out,
-                color 0.2s ease-in-out;
-
-    &:focus {
-        outline: 2px solid var(--outline);
-        border-color: transparent;
-        color: var(--outline);
-        box-shadow: 0 0 8px 4px var(--outline);
-        text-shadow: 0 0 1px var(--outline);
-
-        &::placeholder {
-            color: var(--outline);
-        }
-    }
-}
-
 .submitBtn {
     background-color: var(--foreground);
     color: var(--background);
@@ -96,7 +71,7 @@
     border-radius: 5px;
     border: 2px solid transparent;
     transition: all 0.2s ease-in-out;
-    margin-top: 10px;
+    margin-top: 25px;
     cursor: pointer;
 
     &:hover {
