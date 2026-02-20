@@ -32,14 +32,15 @@ export default function signup() {
                 }
             },
         })
+        if (auth.error) {
+            setShowToast(true);
+            setToastMessage("An error has occurred, please try again.");
+            return;
+            } 
         if (auth.data) {
             setShowToast(true);
             setToastMessage("Account created, please check your email and verify your account");      
             }
-        if (auth.error) {
-            setShowToast(true);
-            setToastMessage("An error has occurred, please try again.");
-            } 
         }  
 
     return (

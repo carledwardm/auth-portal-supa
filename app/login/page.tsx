@@ -26,16 +26,16 @@ export default function login() {
             email: userEmail,
             password: userPassword,
         })
+        if (auth.error) {
+            setShowToast(true);
+            setToastMessage("Your credentials are invalid, please try again.");
+            return;
+        }
         if (auth.data) {
             setShowToast(true);
             setToastMessage("Successfully signed in.");
             setTimeout(() => router.push("/"), 3000);
         }
-        if (auth.error) {
-            setShowToast(true);
-            setToastMessage("Your credentials are invalid, please try again.");
-        }
-        
     }
 
     return (
